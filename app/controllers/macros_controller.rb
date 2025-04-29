@@ -5,6 +5,7 @@ class MacrosController < ApplicationController
 
   def do_magic
     @the_description = params.fetch("description_param")
+    @the_image = params.fetch("image_param")
 
     render({ :template => "macro_templates/results" })
   end

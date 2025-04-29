@@ -7,6 +7,8 @@ class MacrosController < ApplicationController
     @the_description = params.fetch("description_param")
     @the_image = params.fetch("image_param")
 
+    @the_image_converted = DataURI.convert(@the_image)
+
     render({ :template => "macro_templates/results" })
   end
 end

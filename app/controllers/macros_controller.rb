@@ -11,7 +11,7 @@ class MacrosController < ApplicationController
 
     c = OpenAI::Chat.new
     c.system("You are an expert nutritionist. Estimate the macronutrients (carbohydrates, protein, and fat) in grams, as well as total calories in kcal.")
-    c.user(@the_description)
+    c.user(@the_description, image: @the_image)
     @result = c.assistant!
 
 

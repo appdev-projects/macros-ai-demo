@@ -9,6 +9,12 @@ class MacrosController < ApplicationController
 
     @the_image_converted = DataURI.convert(@the_image)
 
+    c = OpenAI::Chat.new
+    c.system("You are an expert nutritionist. Estimate the macronutrients (carbohydrates, protein, and fat) in grams, as well as total calories in kcal.")
+    c.user(@the_description)
+    @result = c.assistant!
+
+
     render({ :template => "macro_templates/results" })
   end
 end

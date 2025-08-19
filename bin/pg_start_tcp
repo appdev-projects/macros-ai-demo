@@ -1,0 +1,14 @@
+#!/bin/bash
+# Start PostgreSQL with both TCP (localhost:5432) and Unix socket support
+
+# Stop any existing PostgreSQL instances
+pg_ctl -D /workspaces/.pgsql/data stop 2>/dev/null
+sleep 2
+
+# Start PostgreSQL with TCP enabled on localhost:5432
+pg_ctl -D /workspaces/.pgsql/data \
+  -l /workspaces/.pgsql/logfile \
+  -o "-p 5432 -h localhost -k /home/student/.pg_ctl/sockets" \
+  start
+
+echo "PostgreSQL started with TCP on localhost:5432"
